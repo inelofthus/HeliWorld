@@ -29,18 +29,9 @@ public class Helicopter2 {
     public void update(float dt){
 
     }
-    public void setPos(Vector3 touchPos){
+    public void setPos(Vector3 pos){
         //birdAnimation.update(dt);
-        float x = touchPos.x;
-        float y = touchPos.y;
-
-        if(x <= 0 || x > HelicopterTasks.WIDTH / 2 - texture.getWidth()) {
-            x = x <= 0 ? 0 : HelicopterTasks.WIDTH;
-        }
-        if(y <= 0 || y > HelicopterTasks.HEIGHT / 2 - texture.getHeight()) {
-            y = y <= 0 ? 0 : HelicopterTasks.HEIGHT;
-        }
-        position.set(x, y, 0);
+        position.set(pos);
     }
         /*velocity.scl(dt);
         position.add(velocity.x, velocity.y, 0);

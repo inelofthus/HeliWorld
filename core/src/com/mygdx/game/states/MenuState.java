@@ -40,9 +40,9 @@ public class MenuState extends State {
             gsm.set(new Task1(gsm));
             dispose();
         } else if(Gdx.input.justTouched() && isOnTask2Btn(leftXBound, rightXBound)){
-            //gsm.set(new Task2(gsm));
-            //dispose();
-            System.out.println("Task 2");
+            gsm.set(new Task2(gsm));
+            dispose();
+            //System.out.println("Task 2");
         }
         else if(Gdx.input.justTouched() && isOnTask3Btn(leftXBound, rightXBound)){
             gsm.set(new Task3(gsm));

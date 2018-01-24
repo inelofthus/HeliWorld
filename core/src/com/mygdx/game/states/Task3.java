@@ -1,39 +1,44 @@
 package com.mygdx.game.states;
 
+/**
+ * Created by Ine on 24.01.2018.
+ */
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.sprites.HelicopterAnimation;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.HelicopterTasks;
-import com.mygdx.game.sprites.Helicopter;
-//import com.mygdx.game.sprites.Helicopter;
-//import com.mygdx.game.sprites.Tube;
 
 /**
- * Created by Ine on 19.01.2018.
+ * Created by Ine on 24.01.2018.
  */
 
-public class Task1 extends State{
-    private static final int TUBE_SPACING = 125;
-    private static final int TUBE_COUNT = 4;
-    private static final int GROUND_Y_OFFSET = -50;
+public class Task3 extends State{
 
-    private Helicopter helicopter;
+    private HelicopterAnimation helicopter;
     private Texture bg;
 
-    public Task1(GameStateManager gsm){
+    public Task3(GameStateManager gsm){
         super(gsm);
-        helicopter = new Helicopter(50, 200);
+        helicopter = new HelicopterAnimation(50, 200);
+        //Zooms in camera
+        //cam.setToOrtho(false, MyGdxGame.WIDTH / 2, MyGdxGame.HEIGHT / 2);
         bg = new Texture("bg.png");
     }
 
     @Override
     protected void handleInput() {
+
     }
 
     @Override
     public void update(float dt) {
+        //handleInput();
         helicopter.update(dt);
     }
 
@@ -48,6 +53,7 @@ public class Task1 extends State{
     @Override
     public void dispose() {
         bg.dispose();
+        helicopter.dispose();
     }
 
 }

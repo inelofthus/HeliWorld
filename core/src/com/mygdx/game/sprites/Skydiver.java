@@ -1,9 +1,7 @@
 package com.mygdx.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.HelicopterTasks;
 
@@ -22,11 +20,11 @@ public class Skydiver {
 
     public Skydiver(){
         rand = new Random();
-        //position = new Vector3(rand.nextFloat(), rand.nextFloat(), 0);
-        position = new Vector3(100, 30, 0);
+        //position = new Vector3(100, 30, 0);
         skydiver = new Texture("skydiver.png");
+        position = new Vector3(rand.nextFloat() * (HelicopterTasks.WIDTH/2 - skydiver.getWidth() - 1), rand.nextFloat() * (HelicopterTasks.HEIGHT/2 - skydiver.getHeight() - 1), 0);
         bounds = new Rectangle(position.x, position.y, skydiver.getWidth(), skydiver.getHeight());
-        velocity = new Vector3(100, 100, 0);
+        velocity = new Vector3(rand.nextInt(250), rand.nextInt(250), 0);
     }
 
     public void update(float dt){
@@ -58,4 +56,6 @@ public class Skydiver {
         velocity.y = -velocity.y;
         velocity.x = -velocity.x;
     }
+
+    public Rectangle getBounds(){return bounds;}
 }

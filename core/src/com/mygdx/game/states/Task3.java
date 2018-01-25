@@ -23,13 +23,17 @@ public class Task3 extends State{
 
     private HelicopterAnimation helicopter;
     private Texture bg;
-    private Skydiver skydiver;
+    private Array<Skydiver> skydivers;
+    private static final int SKYDIVER_COUNT = 3;
 
     public Task3(GameStateManager gsm){
         super(gsm);
         helicopter = new HelicopterAnimation(50, 200);
-        skydiver = new Skydiver();
         bg = new Texture("bg.png");
+        skydivers = new Array<Skydiver>();
+        for(int i = 1; i <= SKYDIVER_COUNT; i++){
+            skydivers.add(new Skydiver());
+        }
     }
 
     @Override
@@ -41,11 +45,21 @@ public class Task3 extends State{
     public void update(float dt) {
         //handleInput();
         helicopter.update(dt);
-        skydiver.update(dt);
-        if(skydiver.collides(helicopter.getBounds())){
-            helicopter.flipVelocity();
-            helicopter.flipHeliAnimationX();
-            skydiver.flipVelocity();
+        Skydiver prevSkydiver = null;
+        for(Skydiver skydiver : skydivers) {
+            skydiver.update(dt);
+            if (skydiver.collides(helicopter.getBounds())) {
+                helicopter.flipVelocity();
+                helicopter.flipHeliAnimationX();
+                skydiver.flipVelocity();
+            } else if(prevSkydiver != null){
+                if(skydiver.collides(prevSkydiver.getBounds())){
+                    prevSkydiver.flipVelocity();
+                    skydiver.flipVelocity();
+                }
+            }
+
+            prevSkydiver = skydiver;
         }
     }
 
@@ -54,7 +68,9 @@ public class Task3 extends State{
         sb.begin();
         sb.draw(bg, cam.position.x - (cam.viewportWidth / 2), 0);
         sb.draw(helicopter.getHeli(), helicopter.getPosition().x, helicopter.getPosition().y);
-        sb.draw(skydiver.getSkydiver(), skydiver.getPosition().x, skydiver.getPosition().y);
+        for(Skydiver skydiver : skydivers){
+            sb.draw(skydiver.getSkydiver(), skydiver.getPosition().x, skydiver.getPosition().y);
+        }
         sb.end();
     }
 

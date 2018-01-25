@@ -20,7 +20,7 @@ public class Helicopter {
     //private Animation birdAnimation;
     private Texture texture;
     private Sound flap;
-    Sprite sprite;
+    private Sprite sprite;
 
     private Texture helicopter;
     public Helicopter(int x, int y){
@@ -51,6 +51,12 @@ public class Helicopter {
         velocity.scl(1/dt);
 
         //bounds.setPosition(position.x, position.y);
+    }
+
+
+    public void setPosition(int x, int y){
+        this.position.x = x/2;
+        this.position.y = y/2;
     }
 
     public Vector3 getPosition() {

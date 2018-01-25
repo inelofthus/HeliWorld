@@ -2,6 +2,7 @@ package com.mygdx.game.sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
@@ -30,7 +31,9 @@ public class Helicopter2 {
 
     }
     public void setPos(Vector3 pos){
+        //cam.unproject(pos);
         //birdAnimation.update(dt);
+
         position.set(pos);
     }
         /*velocity.scl(dt);

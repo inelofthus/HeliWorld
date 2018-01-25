@@ -17,9 +17,7 @@ public class Helicopter {
     private Vector3 position;
     private Vector3 velocity;
     private Rectangle bounds;
-    //private Animation birdAnimation;
     private Texture texture;
-    private Sound flap;
     private Sprite sprite;
 
     private Texture helicopter;
@@ -28,29 +26,20 @@ public class Helicopter {
         velocity = new Vector3(-100, 100, 0);
         texture = new Texture("heli1.png");
         sprite = new Sprite(texture);
-
-        //birdAnimation = new Animation(new TextureRegion(texture), 3, 0.5f);
-        //bounds = new Rectangle(x, y, bird.getWidth(), bird.getHeight());
-        //bounds = new Rectangle(x, y, texture.getWidth()/3, texture.getHeight());
-        //flap = Gdx.audio.newSound(Gdx.files.internal("sfx_wing.ogg"));
     }
 
     public void update(float dt){
-        //birdAnimation.update(dt);
         if(position.y <= 0 || position.y > HelicopterTasks.HEIGHT / 2 - texture.getHeight()) {
             velocity.y = -velocity.y;
         }
         if(position.x <= 0 || position.x > HelicopterTasks.WIDTH / 2 - texture.getWidth()) {
             velocity.x = -velocity.x;
             sprite.flip(true, false);
-
         }
         velocity.scl(dt);
         position.add(velocity.x, velocity.y, 0);
 
         velocity.scl(1/dt);
-
-        //bounds.setPosition(position.x, position.y);
     }
 
 
